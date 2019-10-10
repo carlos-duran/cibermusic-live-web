@@ -8,9 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: '#056593',
         gradient: {
-          0: '#08C7D6',
-          1: '#02023E'
+          0: '#02023E',
+          1: '#08C7D6'
         }
       }
     }
