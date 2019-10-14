@@ -12,104 +12,43 @@
       </nuxt-link>
     </div>
     <div class="w-full max-w-xl bg-white px-4 py-8 md:px-8 rounded-lg">
-      <form @submit="submit">
-        <h3 class="text-xl text-center mb-6 text-grey-700 md:w-2/3 mx-auto">
-          ¡Regístrate y conecta con nuestra variedad de artistas!
+      <SignupForm v-if="!credentials" @done="credentials = $event" />
+      <div v-else class="text-center text-grey-700">
+        <h3 class="text-xl mb-6 md:w-2/3 mx-auto">
+          ¡Felicidades!
         </h3>
-
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="first-name" class="block px-2 mb-1 md:w-2/5">
-            Nombres
-          </label>
-          <input
-            id="first-name"
-            class="form-input md:w-3/5"
-            type="text"
-            required
-          />
-        </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="last-name" class="block px-2 mb-1 md:w-2/5">
-            Apellidos
-          </label>
-          <input
-            id="last-name"
-            class="form-input md:w-3/5"
-            type="text"
-            required
-          />
-        </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="email" class="block px-2 mb-1 md:w-2/5">
-            Correo electrónico
-          </label>
-          <input id="email" class="form-input md:w-3/5" type="email" required />
-        </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="password" class="block px-2 mb-1 md:w-2/5">
-            Contraseña
-          </label>
-          <input
-            id="password"
-            class="form-input md:w-3/5"
-            type="password"
-            required
-          />
-        </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="repeat-password" class="block px-2 mb-1 md:w-2/5">
-            Confirma tu contraseña
-          </label>
-          <input
-            id="repeat-password"
-            class="form-input md:w-3/5"
-            type="password"
-            required
-          />
-        </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="birthdate" class="block px-2 mb-1 md:w-2/5">
-            Fecha de nacimiento
-          </label>
-          <input
-            id="birthdate"
-            class="form-input md:w-3/5"
-            type="date"
-            required
-          />
-        </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="country" class="block px-2 mb-1 md:w-2/5">
-            País
-          </label>
-          <select id="country" class="form-input md:w-3/5" required>
-            <option value selected disabled>Selecciona tu país</option>
-            <option value="Perú">Perú</option>
-          </select>
-        </div>
-        <div class="mb-4">
-          <button class="p-2 w-full bg-primary text-white rounded-lg">
-            Registrarse
-          </button>
-        </div>
-      </form>
+        <p class="mb-6">
+          Se registró tu cuenta con éxito! Ahora puedes disfrutar de toda
+          nuestra música y artistas!
+        </p>
+        <button class="py-2 px-6 bg-primary text-white rounded-lg">
+          Ir al inicio
+        </button>
+      </div>
     </div>
 
     <div class="text-center my-3 text-white underline">
-      <nuxt-link to="/">Regresar</nuxt-link>
+      <nuxt-link v-if="!credentials" to="/">Regresar</nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
+import SignupForm from '~/components/external/SignupForm'
+
 export default {
-  layout: 'auth',
+  components: {
+    SignupForm
+  },
+  data() {
+    return {
+      credentials: false
+    }
+  },
   methods: {
-    async submit() {
-      // Do your stuff
+    goHome() {
+      this.$auth.loginWith('local', { data: this.credentials })
     }
   }
 }
 </script>
-
-<style></style>

@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 export default {
   mode: 'spa',
   /*
@@ -10,7 +13,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/png', href: '/logo/profile.png' }]
   },
   /*
    ** Customize the progress-bar color
@@ -23,7 +26,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~/plugins/global' }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -49,6 +52,9 @@ export default {
   axios: {},
 
   auth: {
+    redirect: {
+      home: '/home'
+    },
     strategies: {
       local: {
         endpoints: {
@@ -61,7 +67,8 @@ export default {
             url: '/user',
             method: 'get',
             propertyName: false
-          }
+          },
+          logout: false
         }
       }
     }

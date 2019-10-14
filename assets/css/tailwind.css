@@ -2,11 +2,5 @@
 @import 'tailwindcss/components';
 @import './custom-components.postcss';
 @import 'tailwindcss/utilities';
-
-.bg-gradient {
-  background-image: linear-gradient(
-    to left,
-    theme('colors.gradient.0'),
-    theme('colors.gradient.1')
-  );
-}
+@import './custom-utils.postcss';
+@import './custom-others.postcss';

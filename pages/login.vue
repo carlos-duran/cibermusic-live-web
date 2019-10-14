@@ -16,7 +16,8 @@
         <div class="mb-4">
           <input
             id="email"
-            class="form-input"
+            v-model="email"
+            class="form-input form-input-lg"
             type="email"
             placeholder="Correo electrónico"
             required
@@ -25,14 +26,17 @@
         <div class="mb-4">
           <input
             id="password"
-            class="form-input"
+            v-model="password"
+            class="form-input form-input-lg"
             type="password"
             placeholder="Contraseña"
             required
           />
         </div>
         <div>
-          <button class="p-2 w-full bg-primary text-white rounded-lg">
+          <button
+            class="w-full p-2 bg-primary text-white rounded focus:outline-none focus:shadow-outline"
+          >
             Iniciar sesión
           </button>
         </div>
@@ -47,11 +51,21 @@
 
 <script>
 export default {
-  layout: 'auth',
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
   methods: {
     submit() {
       // Do your stuff
-      this.$router.push('/home')
+      this.$auth.loginWith('local', {
+        data: {
+          email: this.email,
+          password: this.password
+        }
+      })
     }
   }
 }

@@ -1,0 +1,28 @@
+
+@responsive {
+  @variants hover {
+    .bg-gradient {
+      background-image: linear-gradient(
+        to left,
+        theme('colors.gradient.0'),
+        theme('colors.gradient.1')
+      );
+      background-size: 200% 100%;
+      animation: animated-gradient 20s infinite;
+    }
+
+    .bg-black-trans {
+      background-color: rgba(0, 0, 0, .3);
+    }
+
+    .bg-black-trans-dark {
+      background-color: rgba(0, 0, 0, .6);
+    }
+  }
+}
+
+@keyframes animated-gradient {
+  0%{background-position:0% 0%}
+  50%{background-position:100% 0%}
+  100%{background-position:0% 0%}
+}
