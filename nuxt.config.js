@@ -1,5 +1,6 @@
-import * as dotenv from 'dotenv'
-dotenv.config()
+import dotenv from 'dotenv'
+const env = process.env.NODE_ENV
+dotenv.config({ path: '.env' + (env ? `.${env}` : '') })
 
 export default {
   mode: 'spa',
@@ -45,6 +46,7 @@ export default {
     '@nuxtjs/auth'
     // '@nuxtjs/pwa'
   ],
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

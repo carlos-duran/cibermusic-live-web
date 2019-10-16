@@ -1,7 +1,7 @@
 <template>
   <div class="bg-black lg:bg-black-trans-dark h-full flex flex-col relative">
     <div class="absolute p-2 md:p-4 top-0 right-0">
-      <div class="h-10 md:h-12 flex items-center">
+      <div class="lg:hidden h-10 md:h-12 flex items-center">
         <div class="px-2 md:px-4">
           <button
             type="button"
@@ -35,7 +35,9 @@
         <nuxt-link to="/perfil" class="block p-4">Perfil</nuxt-link>
         <nuxt-link to="/biblioteca" class="block p-4">Biblioteca</nuxt-link>
         <nuxt-link to="/favoritos" class="block p-4">Favoritos</nuxt-link>
-        <nuxt-link to="/terminos" class="block p-4">Términos</nuxt-link>
+        <nuxt-link to="/terminos" class="block p-4">
+          Términos y Condiciones
+        </nuxt-link>
       </div>
 
       <button

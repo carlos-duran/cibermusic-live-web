@@ -21,8 +21,11 @@
           Se registró tu cuenta con éxito! Ahora puedes disfrutar de toda
           nuestra música y artistas!
         </p>
-        <button class="py-2 px-6 bg-primary text-white rounded-lg">
-          Ir al inicio
+        <button
+          class="py-2 px-6 bg-primary text-white rounded-lg"
+          @click="goHome"
+        >
+          ¡Empieza a disfrutar!
         </button>
       </div>
     </div>
@@ -37,6 +40,8 @@
 import SignupForm from '~/components/external/SignupForm'
 
 export default {
+  middleware: 'auth',
+  auth: 'guest',
   components: {
     SignupForm
   },
