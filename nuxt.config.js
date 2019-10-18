@@ -80,7 +80,6 @@ export default {
    ** Build configuration
    */
   build: {
-    vendor: ['dragscroll'],
     /*
      ** You can extend webpack config here
      */
