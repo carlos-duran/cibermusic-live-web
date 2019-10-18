@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 const env = process.env.NODE_ENV
-dotenv.config({ path: '.env' + (env ? `.${env}` : '') })
+dotenv.config({ path: '.env' + (env !== 'development' ? `.${env}` : '') })
 
 export default {
   mode: 'spa',
@@ -80,6 +80,7 @@ export default {
    ** Build configuration
    */
   build: {
+    vendor: ['dragscroll'],
     /*
      ** You can extend webpack config here
      */

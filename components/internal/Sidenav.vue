@@ -24,7 +24,7 @@
 
     <div class="my-auto px-4">
       <img
-        class="flex-none my-3 rounded-full w-32 h-32 mx-auto"
+        class="flex-none mt-8 mb-8 md:mb-32 rounded-full w-32 h-32 mx-auto"
         src="https://placehold.it/200x200"
         alt
       />
@@ -41,7 +41,7 @@
       </div>
 
       <button
-        class="block px-4 py-2 bg-red-500 rounded my-3 mx-auto focus:outline-none"
+        class="block px-4 py-2 bg-red-500 rounded mt-6 mb-8 md:mb-32 mx-auto focus:outline-none"
         @click="$auth.logout('local')"
       >
         Cerrar sesión

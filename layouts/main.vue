@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient text-white h-screen flex">
+  <div class="bg-gradient text-white h-full flex">
     <div class="w-full flex-1 flex flex-col">
       <Topnav />
 

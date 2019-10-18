@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center items-center p-3">
+  <div class="min-h-full flex flex-col justify-center items-center p-3">
     <div class="my-4 p-3">
       <nuxt-link to="/">
         <img

@@ -3,7 +3,7 @@
     <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
       Las más escuchadas
     </h3>
-    <div class="-mx-2 overflow-x-auto scrolling-touch pb-4 mb-4">
+    <div class="-mx-2 overflow-x-auto pb-4 mb-4">
       <div class="flex">
         <div
           v-for="i in 5"
@@ -18,7 +18,7 @@
     <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
       Recientemente agregadas
     </h3>
-    <div class="-mx-2 overflow-x-auto scrolling-touch pb-4 mb-4">
+    <div class="-mx-2 overflow-x-auto pb-4 mb-4">
       <div class="flex">
         <div
           v-for="i in 4"
@@ -31,7 +31,7 @@
     </div>
 
     <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">Tus favoritas</h3>
-    <div class="-mx-2 overflow-x-auto scrolling-touch pb-4 mb-4">
+    <div class="-mx-2 overflow-x-auto pb-4 mb-4">
       <div class="flex">
         <div
           v-for="i in 7"
@@ -47,7 +47,7 @@
       <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
         Playlist de prueba
       </h3>
-      <div class="-mx-2 overflow-x-auto scrolling-touch pb-4 mb-4">
+      <div class="-mx-2 overflow-x-auto pb-4 mb-4">
         <div class="flex">
           <div
             v-for="(track, i) in playlist.tracks.data.slice(0, 9)"

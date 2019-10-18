@@ -1,11 +1,11 @@
 <template>
-  <div class="min-h-screen relative">
+  <div class="h-full relative">
     <div class="absolute inset-0 overflow-hidden">
       <div class="sliding-background relative">
         <div class="bg-black-trans absolute inset-0"></div>
       </div>
     </div>
-    <div class="relative">
+    <div class="relative h-full overflow-auto">
       <nuxt />
     </div>
   </div>

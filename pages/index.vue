@@ -1,13 +1,13 @@
 <template>
   <div
-    class="min-h-screen flex justify-center items-center text-white text-center"
+    class="min-h-full flex justify-center items-center text-white text-center"
   >
-    <div class="text-center max-w-md p-6">
+    <div class="text-center max-w-lg p-6">
       <div class="my-6 md:my-8">
         <img
           class="mx-auto max-w-full"
-          width="360"
-          height="120"
+          width="480"
+          height="160"
           src="/logo/vector/default-monochrome.svg"
           alt=""
         />
