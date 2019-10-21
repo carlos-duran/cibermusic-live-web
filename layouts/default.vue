@@ -1,8 +1,8 @@
 <template>
-  <div class="h-full relative bg-primary">
+  <div class="h-full relative bg-black">
     <div class="absolute inset-0 overflow-hidden">
       <div class="sliding-background relative">
-        <div class="bg-black-trans absolute inset-0"></div>
+        <div class="bg-black-trans-dark absolute inset-0"></div>
       </div>
     </div>
     <div class="relative h-full overflow-auto">
@@ -14,10 +14,10 @@
 
 <style lang="postcss" scoped>
 .sliding-background {
-  background: url('https://placehold.it/250x250/056593') repeat;
+  background: url('/images/bg-collage.jpg') repeat scroll center;
   height: 100%;
-  width: 200%;
-  animation: slide 6s linear infinite;
+  width: 7200px;
+  animation: slide 30s linear infinite;
 }
 
 @keyframes slide {
@@ -25,7 +25,7 @@
     transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate3d(-250px, 0, 0);
+    transform: translate3d(-1200px, 0, 0);
   }
 }
 
