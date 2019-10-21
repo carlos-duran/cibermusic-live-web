@@ -61,9 +61,17 @@ export default {
   axios: {},
 
   pwa: {
+    meta: {
+      name: 'CiberMusic Live',
+      theme_color: '#000',
+      lang: 'es'
+    },
     manifest: {
       name: 'CiberMusic Live',
-      lang: 'es'
+      short_name: 'CiberMusic Live',
+      lang: 'es',
+      background_color: '#000',
+      orientation: 'portrait'
     }
   },
 
