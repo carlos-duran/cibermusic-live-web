@@ -49,6 +49,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.defineDesktop)
+    this.$store.dispatch('player/pause')
   },
   methods: {
     defineDesktop() {
