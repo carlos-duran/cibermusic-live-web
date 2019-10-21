@@ -60,6 +60,13 @@ export default {
    */
   axios: {},
 
+  pwa: {
+    manifest: {
+      name: 'CiberMusic Live',
+      lang: 'es'
+    }
+  },
+
   auth: {
     redirect: {
       login: '/welcome',
