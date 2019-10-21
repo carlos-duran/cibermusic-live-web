@@ -10,9 +10,11 @@
       </label>
       <input
         id="first-name"
-        v-model="raw.firstName"
+        v-model.trim="raw.firstName"
         class="form-input md:w-3/5"
         type="text"
+        pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{2,}"
+        title="Solo letras"
         required
       />
     </div>
@@ -22,9 +24,11 @@
       </label>
       <input
         id="last-name"
-        v-model="raw.lastName"
+        v-model.trim="raw.lastName"
         class="form-input md:w-3/5"
         type="text"
+        pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{2,}"
+        title="Solo letras"
         required
       />
     </div>
@@ -34,7 +38,7 @@
       </label>
       <input
         id="email"
-        v-model="raw.email"
+        v-model.trim="raw.email"
         class="form-input md:w-3/5"
         type="email"
         required
@@ -49,6 +53,9 @@
         v-model="raw.password"
         class="form-input md:w-3/5"
         type="password"
+        minlength="8"
+        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*"
+        title="La contraseña debe contener al menos 1 letra minúscula, 1 mayúscula y 1 número."
         required
       />
     </div>
@@ -58,10 +65,11 @@
       </label>
       <input
         id="repeat-password"
-        :pattern="raw.password"
         class="form-input md:w-3/5"
         type="password"
+        :pattern="raw.password"
         title="La contraseña debe ser igual"
+        minlength="8"
         required
       />
     </div>
@@ -74,23 +82,23 @@
           <input
             id="birthdate"
             v-model="raw.birthdate.year"
+            type="number"
             class="form-input"
             placeholder="Año"
-            pattern="(19|20)\d{2}"
-            title="Digite el año en 4 dígitos"
-            maxlength="4"
+            :min="year - 100"
+            :max="year - 18"
             required
           />
         </div>
         <div class="w-1/3 px-1">
           <input
-            id="motnh"
+            id="month"
             v-model="raw.birthdate.month"
+            type="number"
             class="form-input"
             placeholder="Mes"
-            pattern="\d{1,2}"
-            title="Número de mes"
-            maxlength="2"
+            min="1"
+            max="12"
             required
           />
         </div>
@@ -98,11 +106,11 @@
           <input
             id="day"
             v-model="raw.birthdate.day"
+            type="number"
             class="form-input"
             placeholder="Día"
-            pattern="\d{1,2}"
-            title="Solo dígitos"
-            maxlength="2"
+            min="1"
+            :max="lastDay"
             required
           />
         </div>
@@ -138,9 +146,14 @@ const attrs = {
   email: 'Correo electrónico'
 }
 
+const formats = {
+  date: 'fecha'
+}
+
 export default {
   data() {
     return {
+      year: new Date().getFullYear(),
       raw: {
         firstName: '',
         lastName: '',
@@ -156,6 +169,11 @@ export default {
     }
   },
   computed: {
+    lastDay() {
+      const { year, month } = this.raw.birthdate
+      const date = new Date(year, month, 0)
+      return date ? date.getDate() : 31
+    },
     birthdate() {
       const month = ('0' + this.raw.birthdate.month).slice(-2)
       const day = ('0' + this.raw.birthdate.day).slice(-2)
@@ -175,13 +193,25 @@ export default {
         })
       } catch (e) {
         if (e.response && e.response.data.statusCode === 400) {
-          const { message } = e.response.data
-          const attr = message.match(/{([^}]+)}/)
-          if (attr && attr[1]) {
-            alert(message.replace(`{${attr}}`, attrs[attr]))
-          } else {
-            alert(message)
+          let { message } = e.response.data
+
+          const matchAttr = message.match(/{([^}]+)}/)
+          const attr = matchAttr && matchAttr[1]
+          if (attr) {
+            message = message.replace(`{${attr}}`, attrs[attr])
+            const matchFormat = message.match(/"([^"]+)"/)
+            const format = matchFormat && matchFormat[1]
+            if (format) {
+              message = message.replace(`"${format}"`, formats[format])
+            }
           }
+
+          this.$notify({
+            group: 'auth',
+            type: 'error',
+            title: 'Error',
+            text: message
+          })
         } else {
           this.$emit('error')
         }

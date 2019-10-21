@@ -1,8 +1,9 @@
 export const state = () => ({
+  audio: null,
   queue: [],
-  pos: -1,
   playing: false,
-  audio: null
+  pos: -1,
+  muted: false
 })
 
 export const mutations = {
@@ -47,6 +48,11 @@ export const mutations = {
 
   removeFromQueue(state, trackId) {
     state.queue = state.queue.filter((t) => t.id === trackId)
+  },
+
+  setMuted(state, value) {
+    state.audio.muted = value
+    state.muted = value
   }
 }
 

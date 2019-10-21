@@ -8,6 +8,7 @@
     <div class="relative h-full overflow-auto">
       <nuxt />
     </div>
+    <notifications group="auth" position="top center" />
   </div>
 </template>
 

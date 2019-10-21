@@ -59,14 +59,22 @@ export default {
     }
   },
   methods: {
-    submit() {
-      // Do your stuff
-      this.$auth.loginWith('local', {
-        data: {
-          email: this.email,
-          password: this.password
-        }
-      })
+    async submit() {
+      try {
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.email,
+            password: this.password
+          }
+        })
+      } catch (error) {
+        this.$notify({
+          group: 'auth',
+          type: 'error',
+          title: 'Error',
+          text: 'Usuario o contraseña inválidos'
+        })
+      }
     }
   }
 }
