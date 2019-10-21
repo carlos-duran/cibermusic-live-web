@@ -1,5 +1,8 @@
 <template>
-  <div class="w-full bg-black-trans p-2 sm:p-3 md:p-4">
+  <div
+    v-if="$store.state.player.queue.length"
+    class="w-full bg-black-trans p-2 sm:p-3 md:p-4"
+  >
     <div class="flex items-center justify-between">
       <PlayerInfo class="flex-1" />
       <PlayerControls class="flex-none" />

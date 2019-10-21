@@ -2,7 +2,7 @@
   <div class="w-full bg-black-trans p-2 md:p-4">
     <div class="flex items-center justify-between h-10 md:h-12 relative">
       <div class="flex-none px-2 md:px-4">
-        <nuxt-link to="/home" class="px-2 block">
+        <nuxt-link to="/" class="px-2 block">
           <img
             class="block h-6 md:h-8"
             src="/logo/vector/isolated-monochrome-white.svg"

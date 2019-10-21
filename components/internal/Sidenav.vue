@@ -23,11 +23,11 @@
     </div>
 
     <div class="my-auto px-4">
-      <img
-        class="flex-none mt-8 mb-8 md:mb-32 rounded-full w-32 h-32 mx-auto"
-        src="https://placehold.it/200x200"
-        alt
-      />
+      <div
+        class="mt-8 mb-8 md:mb-32 rounded-full w-32 h-32 mx-auto bg-white text-black flex items-center justify-center"
+      >
+        <icon name="account" class="w-24 h-24" />
+      </div>
 
       <div
         class="w-full max-w-sm mx-auto text-center text-xl py-3 my-3 md:my-6 overflow-y-auto border-t border-b border-white"
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-export default {}
+export default {
+  // ...
+}
 </script>
-
-<style></style>

@@ -1,13 +1,15 @@
 <template>
-  <div class="bg-gradient text-white h-full flex">
-    <div class="w-full flex-1 flex flex-col">
+  <div class="bg-gradient text-white h-full flex w-full">
+    <div class="min-w-0 flex-1 flex flex-col">
       <Topnav />
 
-      <div class="w-full flex-1 overflow-y-auto">
-        <div class="mx-auto container my-4 md:my-8 p-3 sm:p-4 md:p-8">
-          <nuxt />
+      <transition name="page" mode="out-in">
+        <div :key="$route.path" class="min-w-0 flex-1 overflow-y-auto">
+          <div class="mx-auto container my-4 md:my-8 p-3 sm:p-4 md:p-8">
+            <nuxt />
+          </div>
         </div>
-      </div>
+      </transition>
 
       <Player />
     </div>
@@ -36,6 +38,11 @@ export default {
   computed: {
     ...mapGetters('layout', ['isSidenavVisible'])
   },
+  watch: {
+    '$route.path'() {
+      this.$store.commit('layout/setSidenavMobile', false)
+    }
+  },
   mounted() {
     this.defineDesktop()
     window.addEventListener('resize', this.defineDesktop)
@@ -52,7 +59,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.5s;

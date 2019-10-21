@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full relative">
+  <div class="h-full relative bg-primary">
     <div class="absolute inset-0 overflow-hidden">
       <div class="sliding-background relative">
         <div class="bg-black-trans absolute inset-0"></div>

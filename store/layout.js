@@ -15,7 +15,11 @@ export const mutations = {
     state.isDesktop = value
   },
 
-  toggleSidenav(state) {
+  setSidenavMobile(state, value) {
+    state.sidenavMobile = value
+  },
+
+  toggleSidenav(state, value) {
     if (state.isDesktop) {
       state.sidenavDesktop = !state.sidenavDesktop
     } else {

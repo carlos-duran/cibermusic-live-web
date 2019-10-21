@@ -20,6 +20,12 @@ export default {
    ** Customize the progress-bar color
    */
   loading: { color: '#fff' },
+
+  loadingIndicator: {
+    name: 'three-bounce',
+    color: 'white',
+    background: 'linear-gradient(to left, #02023E, #08C7D6)'
+  },
   /*
    ** Global CSS
    */
@@ -56,7 +62,9 @@ export default {
 
   auth: {
     redirect: {
-      home: '/home'
+      login: '/welcome',
+      logout: '/welcome',
+      home: '/'
     },
     strategies: {
       local: {
