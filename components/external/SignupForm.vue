@@ -41,6 +41,8 @@
         v-model.trim="raw.email"
         class="form-input md:w-3/5"
         type="email"
+        pattern="[a-zA-Z\d]([\._-]?[a-zA-Z\d])*@[a-zA-Z\d](\.?[a-zA-Z\d])*\.[a-zA-Z]{2,4}"
+        title="Ingrese un email válido."
         required
       />
     </div>
@@ -141,15 +143,6 @@
 </template>
 
 <script>
-const attrs = {
-  birthdate: 'Fecha de cumpleaños',
-  email: 'Correo electrónico'
-}
-
-const formats = {
-  date: 'fecha'
-}
-
 export default {
   data() {
     return {
@@ -192,20 +185,8 @@ export default {
           password: this.raw.password
         })
       } catch (e) {
-        if (e.response && e.response.data.statusCode === 400) {
-          let { message } = e.response.data
-
-          const matchAttr = message.match(/{([^}]+)}/)
-          const attr = matchAttr && matchAttr[1]
-          if (attr) {
-            message = message.replace(`{${attr}}`, attrs[attr])
-            const matchFormat = message.match(/"([^"]+)"/)
-            const format = matchFormat && matchFormat[1]
-            if (format) {
-              message = message.replace(`"${format}"`, formats[format])
-            }
-          }
-
+        if (e.response && e.response.status === 400) {
+          const { message } = e.response.data
           this.$notify({
             group: 'auth',
             type: 'error',

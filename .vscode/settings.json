@@ -1,0 +1,6 @@
+{
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "eslint.validate": ["javascript", "vue"],
+  "editor.formatOnSave": true
+}

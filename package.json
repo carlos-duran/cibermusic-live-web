@@ -15,7 +15,10 @@
     "deploy:prod": "cross-env NODE_ENV=prod bin/deploy.js"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint"
+    "*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "husky": {
     "hooks": {
