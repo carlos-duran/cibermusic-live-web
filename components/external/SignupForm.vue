@@ -129,7 +129,7 @@
         required
       >
         <option value selected disabled>Selecciona tu país</option>
-        <option value="Perú">Perú</option>
+        <option v-for="c in countries" :key="c" :value="c">{{ c }}</option>
       </select>
     </div>
     <div class="mb-4">
@@ -146,6 +146,7 @@
 export default {
   data() {
     return {
+      countries: [],
       year: new Date().getFullYear(),
       raw: {
         firstName: '',
@@ -172,6 +173,9 @@ export default {
       const day = ('0' + this.raw.birthdate.day).slice(-2)
       return `${this.raw.birthdate.year}-${month}-${day}`
     }
+  },
+  async mounted() {
+    this.countries = await this.$axios.$get('/countries')
   },
   methods: {
     async submit() {
