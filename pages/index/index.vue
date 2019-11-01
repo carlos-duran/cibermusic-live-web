@@ -118,6 +118,47 @@
       </div>
     </div>
 
+    <div v-for="(results, r) in selectedTopTracksName" :key="r">
+      <div v-for="(app, a) in results" :key="a">
+        <div v-if="app.NameList">
+          <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
+            {{ app.NameList }}
+          </h3>
+          <div class="-mx-2 overflow-x-auto pb-4 mb-6">
+            <div class="flex">
+              <div v-for="(track, i) in results" :key="track">
+                <div
+                  v-if="track.id"
+                  class="px-2 flex w-2/5 sm:w-1/3 md:w-1/4 lg:w-1/5"
+                >
+                  <div
+                    class="cursor-pointer"
+                    @click="loadFullAndPlay({ queue: results, pos: i })"
+                  >
+                    <img
+                      v-if="track.album.cover_medium"
+                      class="rounded"
+                      :src="track.album.cover_medium"
+                      :title="track.title"
+                    />
+                    <img
+                      v-else
+                      class="rounded"
+                      :src="track.artist.picture_medium"
+                      :title="track.title"
+                    />
+                    <h4 class="md:text-lg truncate mt-2">
+                      {{ track.title }}
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div v-for="(results, r) in selectedArtists" :key="r">
       <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
         Selección de prueba
@@ -173,7 +214,8 @@ export default {
       'selectedArtists',
       'selectedTop',
       'selectedTopList',
-      'selectedTopTracks'
+      'selectedTopTracks',
+      'selectedTopTracksName'
     ])
   },
   async mounted() {

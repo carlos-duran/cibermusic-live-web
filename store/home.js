@@ -3,7 +3,8 @@ export const state = () => ({
   selectedArtists: [],
   selectedTop: [],
   selectedTopList: [],
-  selectedTopTracks: []
+  selectedTopTracks: [],
+  selectedTopTracksName: []
 })
 
 export const mutations = {
@@ -14,7 +15,8 @@ export const mutations = {
       selectedArtists,
       selectedTop,
       selectedTopList,
-      selectedTopTracks
+      selectedTopTracks,
+      selectedTopTracksName
     }
   ) {
     state.selectedPlaylists = selectedPlaylists
@@ -22,6 +24,7 @@ export const mutations = {
     state.selectedTop = selectedTop
     state.selectedTopList = selectedTopList
     state.selectedTopTracks = selectedTopTracks
+    state.selectedTopTracksName = selectedTopTracksName
   }
 }
 
@@ -32,12 +35,14 @@ export const actions = {
     const selectedTop = await this.$axios.$get('/selected-top')
     const selectedTopList = await this.$axios.$get('/selected-toplist')
     const selectedTopTracks = await this.$axios.$get('/selected-toptracks')
+    const selectedTopTracksName = await this.$axios.$get('/api')
     commit('setSelected', {
       selectedPlaylists,
       selectedArtists,
       selectedTop,
       selectedTopList,
-      selectedTopTracks
+      selectedTopTracks,
+      selectedTopTracksName
     })
   }
 }
