@@ -1,30 +1,19 @@
 export const state = () => ({
   selectedPlaylists: [],
   selectedArtists: [],
-  selectedTop: [],
-  selectedTopList: [],
   selectedTopTracks: [],
-  selectedTopTracksName: []
+  topPlaylists: []
 })
 
 export const mutations = {
   setSelected(
     state,
-    {
-      selectedPlaylists,
-      selectedArtists,
-      selectedTop,
-      selectedTopList,
-      selectedTopTracks,
-      selectedTopTracksName
-    }
+    { selectedPlaylists, selectedArtists, selectedTopTracks, topPlaylists }
   ) {
     state.selectedPlaylists = selectedPlaylists
     state.selectedArtists = selectedArtists
-    state.selectedTop = selectedTop
-    state.selectedTopList = selectedTopList
     state.selectedTopTracks = selectedTopTracks
-    state.selectedTopTracksName = selectedTopTracksName
+    state.topPlaylists = topPlaylists
   }
 }
 
@@ -32,17 +21,13 @@ export const actions = {
   async loadSelected({ commit }) {
     const selectedPlaylists = await this.$axios.$get('/selected-playlists')
     const selectedArtists = await this.$axios.$get('/selected-artists')
-    const selectedTop = await this.$axios.$get('/selected-top')
-    const selectedTopList = await this.$axios.$get('/selected-toplist')
     const selectedTopTracks = await this.$axios.$get('/selected-toptracks')
-    const selectedTopTracksName = await this.$axios.$get('/api')
+    const topPlaylists = await this.$axios.$get('/top-playlists')
     commit('setSelected', {
       selectedPlaylists,
       selectedArtists,
-      selectedTop,
-      selectedTopList,
       selectedTopTracks,
-      selectedTopTracksName
+      topPlaylists
     })
   }
 }
