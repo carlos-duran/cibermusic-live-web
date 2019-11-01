@@ -45,7 +45,10 @@
     </div>
 
     <div :key="selectedTopTracks.id" selectedTopTracks>
-      <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
+      <h3
+        v-if="selectedTopTracks.id"
+        class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4"
+      >
         Top Ten
       </h3>
       <div class="-mx-2 overflow-x-auto pb-4 mb-6">
@@ -82,7 +85,7 @@
       </div>
     </div>
 
-    <div v-for="playlist in selectedTopList" :key="playlist.id">
+    <!-- <div v-for="playlist in selectedTopList" :key="playlist.id">
       <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
         Holi
       </h3>
@@ -116,7 +119,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div v-for="(results, r) in selectedTopTracksName" :key="r">
       <div v-for="(app, a) in results" :key="a">
