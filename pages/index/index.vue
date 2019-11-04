@@ -44,24 +44,62 @@
       </div>
     </div>
 
-    <div v-for="(results, r) in selectedArtists" :key="r">
+    <div v-for="playlist in topPlaylists" :key="playlist.id">
       <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
-        Selección de prueba
+        {{ playlist.title }}
       </h3>
       <div class="-mx-2 overflow-x-auto pb-4 mb-6">
         <div class="flex">
           <div
-            v-for="(track, i) in results.data.slice(0, 20)"
+            v-for="(track, i) in playlist.data.slice(0, 20)"
             :key="track.id"
             class="px-2 flex-none w-2/5 sm:w-1/3 md:w-1/4 lg:w-1/5"
           >
             <div
               class="cursor-pointer"
-              @click="loadFullAndPlay({ queue: results.data, pos: i })"
+              @click="loadFullAndPlay({ queue: playlist.tracks.data, pos: i })"
             >
               <img
                 class="rounded"
                 :src="track.album.cover_medium"
+                :title="track.title"
+              />
+              <h4 class="md:text-lg truncate mt-2">
+                {{ track.title }}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
+        Top Ten
+      </h3>
+      <div class="-mx-2 overflow-x-auto pb-4 mb-6">
+        <div class="flex">
+          <div
+            v-for="(track, i) in selectedTopTracks.data"
+            :key="track.id"
+            class="px-2 flex-none w-2/5 sm:w-1/3 md:w-1/4 lg:w-1/5"
+          >
+            <div
+              class="cursor-pointer"
+              @click="
+                loadFullAndPlay({ queue: selectedTopTracks.data, pos: i })
+              "
+            >
+              <img
+                v-if="track.album.cover_medium"
+                class="rounded"
+                :src="track.album.cover_medium"
+                :title="track.title"
+              />
+              <img
+                v-else
+                class="rounded"
+                :src="track.artist.picture_medium"
                 :title="track.title"
               />
               <h4 class="md:text-lg truncate mt-2">
@@ -94,7 +132,12 @@ import { mapActions, mapState } from 'vuex'
 export default {
   computed: {
     ...mapState('player', ['queue']),
-    ...mapState('home', ['selectedPlaylists', 'selectedArtists'])
+    ...mapState('home', [
+      'selectedPlaylists',
+      'selectedArtists',
+      'selectedTopTracks',
+      'topPlaylists'
+    ])
   },
   async mounted() {
     if (!this.selectedPlaylists.length) {
