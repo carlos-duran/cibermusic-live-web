@@ -1,12 +1,20 @@
 <template>
-  <div class="flex items-center">
-    <button class="hidden sm:block player-control" @click="previous">
+  <div class="flex items-center justify-center">
+    <button
+      class="player-control"
+      :class="!expanded && 'hidden sm:block'"
+      @click="previous"
+    >
       <Icon name="skip-previous" class="w-4 h-4" />
     </button>
     <button class="player-control" @click="playing ? pause() : play()">
       <Icon :name="playing ? 'pause' : 'play'" class="w-5 h-5 md:w-6 md:h-6" />
     </button>
-    <button class="hidden sm:block player-control" @click="next">
+    <button
+      class="player-control"
+      :class="!expanded && 'hidden sm:block'"
+      @click="next"
+    >
       <Icon name="skip-next" class="w-4 h-4" />
     </button>
   </div>
@@ -15,6 +23,9 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
+  props: {
+    expanded: Boolean
+  },
   computed: {
     ...mapState('player', ['playing'])
   },

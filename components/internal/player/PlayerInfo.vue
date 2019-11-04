@@ -1,9 +1,10 @@
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center relative">
+    <div class="md:hidden absolute inset-0" @click="$emit('expand')"></div>
     <div class="flex-none px-2">
       <img
         class="w-12 h-12 bg-black"
-        :src="currentTrack ? currentTrack.album.cover_medium : ''"
+        :src="currentTrack ? currentTrack.album.cover_small : ''"
         alt=""
       />
     </div>
@@ -15,11 +16,6 @@
         {{ currentTrack ? currentTrack.artist.name : '-' }}
       </h6>
     </div>
-    <div class="hidden sm:block flex-none px-2">
-      <button class="focus:outline-none">
-        <Icon :name="isLiked ? 'heart' : 'heart-outline'" class="w-8 h-8" />
-      </button>
-    </div>
   </div>
 </template>
 
@@ -28,10 +24,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters('player', ['currentTrack']),
-    isLiked() {
-      return true
-    }
+    ...mapGetters('player', ['currentTrack'])
   }
 }
 </script>
