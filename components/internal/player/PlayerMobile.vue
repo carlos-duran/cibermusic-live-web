@@ -1,11 +1,11 @@
 <template>
-  <div class="fixed inset-0 bg-gradient flex flex-col">
+  <div
+    v-touch:swipe.bottom="collapse"
+    class="fixed inset-0 bg-gradient flex flex-col"
+  >
     <div class="flex items-center bg-black-trans p-2 sm:p-3">
       <PlayerInfo class="flex-1" />
-      <button
-        class="focus:outline-none px-4 sm:px-6 py-2"
-        @click="$emit('collapse')"
-      >
+      <button class="focus:outline-none px-4 sm:px-6 py-2" @click="collapse">
         <icon name="close" class="w-4 h-4" />
       </button>
     </div>
@@ -31,6 +31,11 @@ export default {
   },
   computed: {
     ...mapGetters('player', ['currentTrack'])
+  },
+  methods: {
+    collapse() {
+      this.$emit('collapse')
+    }
   }
 }
 </script>

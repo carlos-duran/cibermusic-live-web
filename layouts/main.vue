@@ -4,7 +4,10 @@
       <Topnav />
 
       <transition name="page" mode="out-in">
-        <div :key="$route.path" class="min-w-0 flex-1 overflow-y-auto">
+        <div
+          :key="$route.path"
+          class="min-w-0 flex-1 overflow-y-auto overscroll-none"
+        >
           <div class="mx-auto container my-4 md:my-8 p-3 sm:p-4 md:p-8">
             <nuxt />
           </div>
@@ -61,6 +64,10 @@ export default {
 </script>
 
 <style lang="postcss">
+body {
+  overscroll-behavior: none;
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.5s;
