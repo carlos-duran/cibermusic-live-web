@@ -33,7 +33,7 @@
         class="w-full max-w-sm mx-auto text-center text-xl py-3 my-3 md:my-6 overflow-y-auto border-t border-b border-white"
       >
         <nuxt-link to="/perfil" class="block p-4">Perfil</nuxt-link>
-        <nuxt-link to="/biblioteca" class="block p-4">Biblioteca</nuxt-link>
+        <nuxt-link to="/playlists" class="block p-4">Biblioteca</nuxt-link>
         <nuxt-link to="/favoritos" class="block p-4">Favoritos</nuxt-link>
         <nuxt-link to="/terminos" class="block p-4">
           Términos y Condiciones
