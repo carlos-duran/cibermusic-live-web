@@ -1,8 +1,8 @@
 <template>
   <div
-    class="fixed w-20 h-20 bottom-0 right-0 mb-6 mr-6 cursor-pointer rounded-full overflow-hidden"
+    class="fixed bottom-0 right-0 mb-6 mr-6 cursor-pointer rounded-full overflow-hidden bg-white"
   >
-    <img src="https://placehold.it/80x80" alt="Chatbot" />
+    <img class="w-20 h-20" src="/images/chatbot/bot.svg" alt="Chatbot" />
   </div>
 </template>
 

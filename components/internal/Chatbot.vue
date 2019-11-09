@@ -1,9 +1,7 @@
 <template>
   <div>
     <ChatbotLogo @click.native="isWindowVisible = !isWindowVisible" />
-    <transition name="chatbot">
-      <ChatbotWindow v-if="isWindowVisible" />
-    </transition>
+    <ChatbotWindow v-if="isWindowVisible" @close="isWindowVisible = false" />
   </div>
 </template>
 
