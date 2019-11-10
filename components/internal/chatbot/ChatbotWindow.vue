@@ -1,22 +1,19 @@
 <template>
-  <div class="window max-w-sm w-full fixed bottom-0 right-0 border">
+  <div class="chatbot-wrapper md:max-w-sm w-full fixed bottom-0 right-0">
     <div class="chatbot-icon absolute bg-white rounded-full overflow-hidden">
       <img class="w-20 h-20" src="/images/chatbot/bot.svg" alt="Chatbot" />
     </div>
-    <div class="chatbot-close-icon absolute right-0 top-0">
+    <div class="chatbot-close-icon absolute right-0 top-0 text-white">
       <button
         type="button"
-        class="flex p-2 items-center focus:outline-none"
+        class="flex p-2 items-center focus:outline-none cursour-pointer"
         @click="$emit('close')"
       >
         <icon name="close" class="w-4 h-4" />
       </button>
     </div>
-    <div class="w-full h-full text-black flex flex-col scroll-light">
-      <div
-        ref="messages"
-        class="flex-1 min-h-0 min-w-0 overflow-y-auto p-4 bg-gray-200 bg-chat bg-center"
-      >
+    <div class="chatbot-messages w-full h-full flex flex-col scroll-light">
+      <div ref="messages" class="flex-1 min-h-0 min-w-0 overflow-y-auto p-4">
         <div class="pt-8">
           <div
             v-for="(msg, i) in messages"
@@ -85,10 +82,9 @@ function newMessage() {
 }
 </script>
 
-<style scoped>
-.window {
-  height: 45vh;
-  border-top-left-radius: 5px;
+<style lang="postcss" scoped>
+.chatbot-wrapper {
+  height: 70vh;
 }
 
 .chatbot-icon {
@@ -100,12 +96,26 @@ function newMessage() {
   transform: translate(0, -100%);
 }
 
-.bg-chat {
+.chatbot-messages {
   border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   background-image: url('/images/chatbot/bg.png');
+  @apply bg-gray-200 bg-center border text-black;
 }
 
 .max-w-4\/5 {
   max-width: 80%;
+}
+
+@screen md {
+  .chatbot-wrapper {
+    height: 45vh;
+    min-height: 400px;
+  }
+
+  .chatbot-messages {
+    border-radius: 0;
+    border-top-left-radius: 5px;
+  }
 }
 </style>
