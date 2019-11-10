@@ -25,7 +25,7 @@
             :class="{ 'text-right': msg.author === 'user' }"
           >
             <div
-              class="inline-block p-2 rounded"
+              class="max-w-4/5 inline-block p-2 rounded"
               :class="
                 msg.author === 'bot' ? 'bg-primary text-white' : 'bg-white'
               "
@@ -40,7 +40,7 @@
           v-model="message.text"
           class="h-12 w-full px-4 focus:outline-none"
           placeholder="Escriba aquí..."
-          @keyup.enter="addMessage(message)"
+          @keyup.enter="submitMessage"
         />
       </div>
     </div>
@@ -48,46 +48,29 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   data() {
     return {
-      message: newMessage(),
-      messages: [
-        {
-          author: 'bot',
-          text: 'Hola, ¿en qué puedo ayudarte?'
-        },
-        {
-          author: 'user',
-          text: 'Estoy triste.'
-        },
-        {
-          author: 'bot',
-          text: 'No estés triste.'
-        },
-        {
-          author: 'user',
-          text: 'Gracias, no lo pensé.'
-        },
-        {
-          author: 'bot',
-          text: 'De nada, vuelve pronto'
-        },
-        {
-          author: 'user',
-          text: 'Sí, volveré.'
-        },
-        {
-          author: 'bot',
-          text: 'Me alegra saber eso, ¡aquí estaré!'
-        }
-      ]
+      message: newMessage()
+    }
+  },
+  computed: {
+    ...mapState('chatbot', ['messages'])
+  },
+  watch: {
+    messages: {
+      handler: 'scrollToBottom',
+      immediate: true
     }
   },
   methods: {
-    async addMessage(message) {
-      this.messages.push(message)
+    ...mapActions('chatbot', ['sendMessage']),
+    submitMessage() {
+      this.sendMessage(this.message)
       this.message = newMessage()
+    },
+    async scrollToBottom() {
       await this.$nextTick()
       this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
     }
@@ -120,5 +103,9 @@ function newMessage() {
 .bg-chat {
   border-top-left-radius: 5px;
   background-image: url('/images/chatbot/bg.png');
+}
+
+.max-w-4\/5 {
+  max-width: 80%;
 }
 </style>

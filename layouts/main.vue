@@ -50,10 +50,12 @@ export default {
     }
   },
   mounted() {
+    this.$store.dispatch('chatbot/connect')
     this.defineDesktop()
     window.addEventListener('resize', this.defineDesktop)
   },
   beforeDestroy() {
+    this.$store.dispatch('chatbot/disconnect')
     window.removeEventListener('resize', this.defineDesktop)
     this.$store.dispatch('player/pause')
   },
