@@ -167,7 +167,7 @@ export default {
     },
     async submit() {
       try {
-        await this.$axios.$put('/perfil', {
+        await this.$axios.$put('/user', {
           ...this.userdate,
           birthdate: this.birthdate
         })
