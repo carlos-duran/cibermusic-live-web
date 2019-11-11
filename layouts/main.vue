@@ -22,6 +22,7 @@
     >
       <Sidenav />
     </div>
+    <Chatbot />
   </div>
 </template>
 
@@ -31,12 +32,14 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import Topnav from '@/components/internal/Topnav'
 import Sidenav from '@/components/internal/Sidenav'
 import Player from '@/components/internal/Player'
+import Chatbot from '@/components/internal/Chatbot'
 
 export default {
   components: {
     Topnav,
     Sidenav,
-    Player
+    Player,
+    Chatbot
   },
   computed: {
     ...mapGetters('layout', ['isSidenavVisible'])
@@ -47,10 +50,12 @@ export default {
     }
   },
   mounted() {
+    this.$store.dispatch('chatbot/connect')
     this.defineDesktop()
     window.addEventListener('resize', this.defineDesktop)
   },
   beforeDestroy() {
+    this.$store.dispatch('chatbot/disconnect')
     window.removeEventListener('resize', this.defineDesktop)
     this.$store.dispatch('player/pause')
   },

@@ -54,6 +54,10 @@ export default {
     '@nuxtjs/pwa'
   ],
 
+  env: {
+    API_URL: process.env.API_URL
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
