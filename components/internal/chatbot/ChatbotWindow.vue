@@ -27,7 +27,8 @@
                 msg.author === 'bot' ? 'bg-primary text-white' : 'bg-white'
               "
             >
-              {{ msg.text }}
+              <!-- eslint-disable-next-line vue/no-v-html -->
+              <p v-html="anchorify(msg.text)"></p>
             </div>
           </div>
         </div>
@@ -45,6 +46,7 @@
 </template>
 
 <script>
+import anchorme from 'anchorme'
 import { mapActions, mapState } from 'vuex'
 export default {
   data() {
@@ -70,6 +72,9 @@ export default {
     async scrollToBottom() {
       await this.$nextTick()
       this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
+    },
+    anchorify(text) {
+      return anchorme(text, { files: false })
     }
   }
 }
@@ -81,6 +86,12 @@ function newMessage() {
   }
 }
 </script>
+
+<style>
+.chatbot-messages a {
+  text-decoration: underline;
+}
+</style>
 
 <style lang="postcss" scoped>
 .chatbot-wrapper {
