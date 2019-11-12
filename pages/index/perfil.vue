@@ -109,7 +109,7 @@
       </h3>
       <nuxt-link
         to="/"
-        class="w-full inline-block sm:w-auto border-2 border-white hover:bg-white hover:text-primary py-3 px-6 m-2 rounded-lg text-xl"
+        class="w-full inline-block sm:w-auto border-2 border-white hover:bg-white hover:text-primary py-3 px-3 md:px-6 m-2 rounded-lg text-lg md:text-xl"
       >
         Volver a Inicio
       </nuxt-link>
