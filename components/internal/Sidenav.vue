@@ -31,7 +31,7 @@
           Términos y Condiciones
         </nuxt-link>
         <nuxt-link to="/eliminar" class="block p-4">
-          Eliminar Cuenta
+          Dar de baja mi Cuenta
         </nuxt-link>
       </div>
 
