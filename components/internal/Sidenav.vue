@@ -30,9 +30,6 @@
         <nuxt-link to="/terminos" class="block p-4">
           Términos y Condiciones
         </nuxt-link>
-        <nuxt-link to="/eliminar" class="block p-4">
-          Dar de baja mi Cuenta
-        </nuxt-link>
       </div>
 
       <button

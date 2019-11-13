@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="min-h-full flex flex-col justify-center items-center p-3">
+    <div class="min-h-full flex flex-col justify-center items-center p-3 ">
       <form v-if="!estado" @submit.prevent="submit">
         <div class="mb-4 flex flex-wrap items-center">
           <label for="first-name" class="block md:px-2 mb-1 md:w-2/5">
@@ -96,14 +96,23 @@
             </option>
           </select>
         </div>
-        <div class="mb-4">
+        <div class="mb-4 mb-20">
           <button
-            class="w-full p-2 bg-primary text-white rounded focus:outline-none focus:shadow-outline "
+            class="w-full p-2 bg-primary text-white rounded focus:outline-none focus:shadow-outline mb-20"
           >
             Actualizar Datos
           </button>
         </div>
+        <div class="mt-20 xs:pt-0 md:pt-10">
+          <nuxt-link
+            to="/eliminar"
+            class="block w-full bg-red-600 p-2 px-20 rounded-lg text-lg md:text-xl mt-20 text-center"
+          >
+            Dar de baja mi Cuenta
+          </nuxt-link>
+        </div>
       </form>
+      <div class="mb-4 flex flex-wrap items-center w-3/5"></div>
     </div>
     <div v-if="estado" class="text-center text-grey-700">
       <h3 class="text-xl mb-6 md:w-2/3 mx-auto">
@@ -111,7 +120,7 @@
       </h3>
       <nuxt-link
         to="/"
-        class="w-full inline-block sm:w-auto border-2 border-white hover:bg-white hover:text-primary py-3 px-3 md:px-6 m-2 rounded-lg text-lg md:text-xl"
+        class="w-full inline-block sm:w-auto border-2 border-white hover:bg-white hover:text-primary py-2 px-2 md:px-6 m-2 rounded-lg text-lg md:text-xl"
       >
         Volver a Inicio
       </nuxt-link>
