@@ -30,6 +30,12 @@
         <nuxt-link to="/terminos" class="block p-4">
           Términos y Condiciones
         </nuxt-link>
+        <a
+          href="https://paypal.me/CiberMusicLive?locale.x=es_XC"
+          class="block p-4"
+        >
+          Donacion
+        </a>
       </div>
 
       <button
