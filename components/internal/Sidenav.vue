@@ -32,6 +32,7 @@
         </nuxt-link>
         <a
           href="https://paypal.me/CiberMusicLive?locale.x=es_XC"
+          target="_blank"
           class="block p-4"
         >
           Donacion
