@@ -35,7 +35,10 @@ export default {
       if (!this.q) {
         return
       }
-      this.$router.push({ path: '/search', query: { q: this.q } })
+      setTimeout(
+        () => this.$router.push({ path: '/search', query: { q: this.q } }),
+        4000
+      )
     }
   }
 }
