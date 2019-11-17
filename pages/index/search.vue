@@ -12,7 +12,7 @@
         "{{ $route.query.q }}"
       </h3>
       <div v-if="results">
-        <TracklistItem
+        <TrackItem
           v-for="(track, i) in results.data"
           :key="track.id"
           :tracks="results.data"
@@ -29,12 +29,12 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import TracklistItem from '~/components/internal/tracklist/TracklistItem'
+import TrackItem from '~/components/internal/TrackItem'
 
 export default {
   key: (to) => to.fullPath,
   components: {
-    TracklistItem
+    TrackItem
   },
   data() {
     return {
