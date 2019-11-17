@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState('player', ['playing'])
@@ -28,3 +28,21 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+.player-progress {
+  background-color: lightslategrey;
+  cursor: pointer;
+  height: 2px;
+  min-width: 100%;
+  position: relative;
+
+  .player-seeker {
+    background-color: green;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+</style>
