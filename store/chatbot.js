@@ -17,6 +17,7 @@ export const actions = {
     socket = io(process.env.API_URL)
     socket.on('chat', (message) => {
       commit('addMessage', message)
+      doMessageAction.call(this, message)
     })
   },
 
@@ -28,5 +29,17 @@ export const actions = {
   sendMessage({ commit }, message) {
     socket.emit('chat', message)
     commit('addMessage', message)
+  }
+}
+
+function doMessageAction(message) {
+  if (message.action) {
+    switch (message.action.name) {
+      case 'navigate':
+        this.$router.push(message.action.value)
+        break
+      default:
+        break
+    }
   }
 }
