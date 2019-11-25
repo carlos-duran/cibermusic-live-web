@@ -1,40 +1,42 @@
 <template>
   <div>
-    <div class="min-h-full flex flex-col justify-center items-center p-3 ">
-      <form v-if="!estado" @submit.prevent="submit">
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="first-name" class="block md:px-2 mb-1 md:w-2/5">
+    <div
+      class="md:w-4/5 w-full flex flex-col justify-center items-center md:p-3 mx-auto "
+    >
+      <form v-if="!estado" class="w-full " @submit.prevent="submit">
+        <div class="mb-4 flex flex-wrap items-center  mx-auto md:w-3/5 w-full">
+          <label for="first-name" class="block md:px-2  mb-1 w-1/3">
             Nombres
           </label>
           <input
             id="first-name"
             v-model.trim="userdate.firstName"
-            class="form-input md:w-3/5"
+            class="form-input w-2/3"
             type="text"
             pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{2,}"
             title="Solo letras"
             required
           />
         </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="last-name" class="block md:px-2 mb-1 md:w-2/5">
+        <div class="mb-4 flex flex-wrap items-center  mx-auto md:w-3/5 w-full">
+          <label for="last-name" class="block md:px-2 mb-1 w-1/3">
             Apellidos
           </label>
           <input
             id="last-name"
             v-model.trim="userdate.lastName"
-            class="form-input md:w-3/5"
+            class="form-input w-2/3"
             type="text"
             pattern="[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ ]{2,}"
             title="Solo letras"
             required
           />
         </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="birthdate" class="block md:px-2 mb-1 md:w-2/5">
+        <div class="mb-4 flex flex-wrap items-center  mx-auto md:w-3/5 w-full">
+          <label for="birthdate" class="block md:px-2 mb-1 w-1/3">
             Fecha de nacimiento
           </label>
-          <div class="flex md:w-3/5 ">
+          <div class="flex w-2/3 ">
             <div class="w-1/3 px-1">
               <input
                 id="birthdate"
@@ -73,14 +75,14 @@
             </div>
           </div>
         </div>
-        <div class="mb-4 flex flex-wrap items-center">
-          <label for="country" class="block md:px-2 mb-1 md:w-2/5">
+        <div class="mb-4 flex flex-wrap items-center  mx-auto md:w-3/5 w-full">
+          <label for="country" class="block md:px-2 mb-1 w-1/3">
             País
           </label>
           <select
             id="country"
             v-model="userdate.country"
-            class="form-input md:w-3/5"
+            class="form-input w-2/3"
             required
           >
             <option value selected disabled>
@@ -96,17 +98,17 @@
             </option>
           </select>
         </div>
-        <div class="mb-4 mb-20">
+        <div class="pb-20 mx-auto md:w-3/5 w-full">
           <button
-            class="w-full p-2 bg-primary text-white rounded focus:outline-none focus:shadow-outline mb-20"
+            class="w-full p-2 bg-primary text-white rounded focus:outline-none focus:shadow-outline md:mb-20 "
           >
             Actualizar Datos
           </button>
         </div>
-        <div class="mt-20 xs:pt-0 md:pt-10">
+        <div class="pt-10 md:pt-10  mx-auto md:w-3/5 w-full ">
           <nuxt-link
             to="/eliminar"
-            class="block w-full bg-red-600 p-2 px-20 rounded-lg text-lg md:text-xl mt-20 text-center"
+            class="block w-full bg-red-600 p-2 md:px-20 rounded-lg text-lg md:text-xl md:mt-20  mt-5 text-center"
           >
             Dar de baja mi Cuenta
           </nuxt-link>

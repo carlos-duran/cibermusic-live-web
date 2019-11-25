@@ -36,6 +36,9 @@ export default {
         return
       }
       this.$router.push({ path: '/search', query: { q: this.q } })
+      if (this.$router.currentRoute.path === '/search') {
+        this.$refs.page.$forceUpdate()
+      }
     }
   }
 }
