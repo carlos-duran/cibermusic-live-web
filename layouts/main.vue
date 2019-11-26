@@ -50,6 +50,7 @@ export default {
     }
   },
   mounted() {
+    this.$store.dispatch('user/loadPlaylists')
     this.$store.dispatch('chatbot/connect')
     this.defineDesktop()
     window.addEventListener('resize', this.defineDesktop)

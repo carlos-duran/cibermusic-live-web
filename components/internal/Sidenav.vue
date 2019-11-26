@@ -24,11 +24,14 @@
       <div
         class="w-full max-w-sm mx-auto text-center text-xl py-3 my-3 md:my-6 overflow-y-auto border-t border-b border-white"
       >
-        <nuxt-link to="/perfil" class="block p-4">Editar Perfil</nuxt-link>
-        <nuxt-link to="/biblioteca" class="block p-4">Biblioteca</nuxt-link>
-        <nuxt-link to="/favoritos" class="block p-4">Favoritos</nuxt-link>
-        <nuxt-link to="/terminos" class="block p-4">
-          Términos y Condiciones
+        <nuxt-link
+          v-for="link in links"
+          :key="link.to"
+          :to="link.to"
+          class="block p-4"
+          @click.native="setSidenavMobile(false)"
+        >
+          {{ link.text }}
         </nuxt-link>
       </div>
 
@@ -43,7 +46,25 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
-  // ...
+  data() {
+    return {
+      links: getLinks()
+    }
+  },
+  methods: {
+    ...mapMutations('layout', ['setSidenavMobile'])
+  }
+}
+
+function getLinks() {
+  return [
+    { to: '/perfil', text: 'Editar Perfil' },
+    { to: '/biblioteca', text: 'Biblioteca' },
+    { to: '/favoritos', text: 'Favoritos' },
+    { to: '/terminos', text: 'Términos y Condiciones' }
+  ]
 }
 </script>
