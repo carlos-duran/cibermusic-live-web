@@ -32,9 +32,30 @@
     </div>
     <div class="flex-none ml-auto flex items-center">
       <p class="px-1">{{ track.duration | toTime }}</p>
-      <!-- <button class="p-1 focus:outline-none">
-        <Icon name="dots-vertical" class="w-6 h-6" />
-      </button> -->
+      <div
+        v-closable="{
+          handler: 'onClickOutsideOptions',
+          exclude: []
+        }"
+        class="relative"
+      >
+        <button class="p-1 focus:outline-none" @click="showOptions = true">
+          <Icon name="dots-vertical" class="w-6 h-6" />
+        </button>
+        <div
+          v-if="showOptions"
+          class="w-48 absolute top-0 right-0 bg-black-trans-dark text-white"
+        >
+          <div
+            v-for="(option, i) in options"
+            :key="i"
+            class="p-2 cursor-pointer"
+            @click="doOptionAction(option)"
+          >
+            {{ option.text }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +77,15 @@ export default {
     pos: {
       type: Number,
       default: -1
+    },
+    options: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      showOptions: false
     }
   },
   computed: {
@@ -81,6 +111,13 @@ export default {
       } else {
         this.loadFullAndPlay({ queue: this.tracks, pos: this.pos })
       }
+    },
+    onClickOutsideOptions() {
+      this.showOptions = false
+    },
+    doOptionAction(option) {
+      option.action()
+      this.showOptions = false
     }
   }
 }

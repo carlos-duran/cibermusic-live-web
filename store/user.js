@@ -17,5 +17,11 @@ export const actions = {
     const playlist = await this.$axios.$post('/playlists', newPlaylist)
     await dispatch('loadPlaylists')
     return playlist
+  },
+  async addTrackToPlaylist({ dispatch }, { playlist, track }) {
+    const result = await this.$axios.$post(`/playlists/${playlist}/song`, track)
+    if (result.ok) {
+      await dispatch('loadPlaylists')
+    }
   }
 }

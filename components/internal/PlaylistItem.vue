@@ -1,9 +1,9 @@
 <template>
-  <nuxt-link
-    :to="'/biblioteca/' + playlist.id"
-    class="group flex items-center hover:bg-black-trans py-2 md:py-3 px-2"
-  >
-    <div class="min-w-0 w-full flex-1 flex items-center">
+  <div class="group flex items-center hover:bg-black-trans">
+    <div
+      class="cursor-pointer min-w-0 w-full flex-1 flex items-center py-2 md:py-3 px-2"
+      @click="action"
+    >
       <div class="flex-none">
         <!-- <img
           class="group-hover:hidden w-10 h-10"
@@ -20,12 +20,12 @@
         </p>
       </div>
     </div>
-    <div class="flex-none ml-auto flex items-center">
+    <div v-if="showOptions" class="flex-none ml-auto flex items-center px-2">
       <button class="p-1 focus:outline-none">
         <Icon name="dots-vertical" class="w-6 h-6" />
       </button>
     </div>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>
@@ -34,6 +34,14 @@ export default {
     playlist: {
       type: Object,
       default: () => ({})
+    },
+    showOptions: {
+      type: Boolean,
+      default: false
+    },
+    action: {
+      type: Function,
+      required: true
     }
   }
 }

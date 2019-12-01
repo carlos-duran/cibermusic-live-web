@@ -17,7 +17,11 @@
     </div>
 
     <div v-for="playlist in playlists" :key="playlist.id">
-      <PlaylistItem :playlist="playlist" />
+      <PlaylistItem
+        :playlist="playlist"
+        :show-options="false"
+        :action="() => $router.push('/biblioteca/' + playlist.id)"
+      />
     </div>
 
     <AppModal :show.sync="showNewPlaylistModal" class="text-center">

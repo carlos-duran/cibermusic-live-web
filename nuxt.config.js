@@ -33,7 +33,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/global' }],
+  plugins: [{ src: '~/plugins/global' }, { src: '~/plugins/closable' }],
   /*
    ** Nuxt.js dev-modules
    */
