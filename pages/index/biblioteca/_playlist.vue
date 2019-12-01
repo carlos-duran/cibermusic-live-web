@@ -52,7 +52,7 @@ export default {
       try {
         await this.removeTrackFromPlaylist({
           playlist: this.playlist.id,
-          track: track.id
+          track: track._id
         })
         this.$notify({
           group: 'main',
