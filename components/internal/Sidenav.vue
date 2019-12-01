@@ -16,7 +16,7 @@
 
     <div class="my-auto px-4">
       <div
-        class="mt-8 mb-8 md:mb-32 rounded-full w-32 h-32 mx-auto bg-white text-black flex items-center justify-center"
+        class="mt-8 mb-8 md:mb-32 rounded-full w-24 h-24 md:w-32 md:h-32 mx-auto bg-white text-black flex items-center justify-center"
       >
         <icon name="account" class="w-24 h-24" />
       </div>
@@ -33,6 +33,13 @@
         >
           {{ link.text }}
         </nuxt-link>
+        <a
+          href="https://paypal.me/CiberMusicLive?locale.x=es_XC"
+          target="_blank"
+          class="block p-4"
+        >
+          Donación
+        </a>
       </div>
 
       <button

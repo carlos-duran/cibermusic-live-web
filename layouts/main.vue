@@ -23,6 +23,7 @@
       <Sidenav />
     </div>
     <Chatbot />
+    <notifications group="main" position="top center" />
   </div>
 </template>
 
