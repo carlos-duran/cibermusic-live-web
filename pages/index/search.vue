@@ -159,6 +159,7 @@ export default {
         this.showAddToPlaylistModal = false
         this.$notify({
           group: 'main',
+          type: 'success',
           title: 'Canción agregada'
         })
       } catch (error) {

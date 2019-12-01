@@ -19,7 +19,13 @@
     <div v-for="playlist in playlists" :key="playlist.id">
       <PlaylistItem
         :playlist="playlist"
-        :show-options="false"
+        :show-play="true"
+        :options="[
+          {
+            text: 'Eliminar playlist',
+            action: () => deletePlaylistAction(playlist)
+          }
+        ]"
         :action="() => $router.push('/biblioteca/' + playlist.id)"
       />
     </div>
@@ -81,13 +87,33 @@ export default {
     this.loadPlaylists()
   },
   methods: {
-    ...mapActions('user', ['loadPlaylists', 'createPlaylist']),
+    ...mapActions('user', [
+      'loadPlaylists',
+      'createPlaylist',
+      'deletePlaylist'
+    ]),
     async submitPlaylist() {
       try {
         const playlist = await this.createPlaylist(this.newPlaylist)
         this.newPlaylist.name = ''
         this.showNewPlaylistModal = false
         this.$router.push('/biblioteca/' + playlist.id)
+      } catch (error) {
+        this.$notify({
+          group: 'main',
+          type: 'error',
+          title: 'Ocurrió un error.',
+          text: 'Inténtalo más tarde'
+        })
+      }
+    },
+    async deletePlaylistAction(playlist) {
+      try {
+        await this.deletePlaylist(playlist.id)
+        this.$notify({
+          group: 'main',
+          title: 'Playlist eliminada'
+        })
       } catch (error) {
         this.$notify({
           group: 'main',

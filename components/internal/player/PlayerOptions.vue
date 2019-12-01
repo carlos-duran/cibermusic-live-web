@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="flex justify-end items-center text-gray-200">
-      <button class="player-option mx-1">
+      <!-- <button class="player-option mx-1">
         <Icon name="playlist-play" class="w-5 h-5" />
-      </button>
+      </button> -->
       <button class="player-option mx-1" @click="setMuted(!muted)">
         <Icon :name="muted ? 'volume-off' : 'volume-high'" class="w-5 h-5" />
       </button>

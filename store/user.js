@@ -18,8 +18,20 @@ export const actions = {
     await dispatch('loadPlaylists')
     return playlist
   },
+  async deletePlaylist({ dispatch }, playlistId) {
+    const result = await this.$axios.$delete('/playlists/' + playlistId)
+    if (result.ok) {
+      await dispatch('loadPlaylists')
+    }
+  },
   async addTrackToPlaylist({ dispatch }, { playlist, track }) {
     const result = await this.$axios.$post(`/playlists/${playlist}/song`, track)
+    if (result.ok) {
+      await dispatch('loadPlaylists')
+    }
+  },
+  async removeTrackFromPlaylist({ dispatch }, { playlist, track }) {
+    const result = await this.$axios.$delete(`/playlists/${playlist}/${track}`)
     if (result.ok) {
       await dispatch('loadPlaylists')
     }
