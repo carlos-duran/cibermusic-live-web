@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -45,7 +44,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('perfil', ['perfil']),
     user() {
       return this.$auth.user
     }
@@ -54,9 +52,6 @@ export default {
     this.userdate = await this.$axios.$get('/user')
   },
   methods: {
-    goHome() {
-      return this.$auth.redirect('/')
-    },
     async submit() {
       try {
         await this.$axios.$put('/user/down', {

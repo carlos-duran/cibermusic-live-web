@@ -35,7 +35,7 @@
           target="_blank"
           class="block p-4"
         >
-          Donacion
+          Donación
         </a>
       </div>
 
