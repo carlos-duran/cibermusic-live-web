@@ -33,13 +33,26 @@ export const actions = {
 }
 
 function doMessageAction(message) {
-  if (message.action) {
-    switch (message.action.name) {
-      case 'navigate':
-        this.$router.push(message.action.value)
-        break
-      default:
-        break
+  if (message.actions) {
+    for (const action of message.actions) {
+      switch (action.name) {
+        case 'navigate':
+          this.$router.push(action.value)
+          break
+        case 'search-play':
+          this.$router.push({
+            path: '/search',
+            query: {
+              q: action.value,
+              play: true,
+              hash: Math.round(Math.random() * 100)
+            }
+          })
+
+          break
+        default:
+          break
+      }
     }
   }
 }
