@@ -1,11 +1,15 @@
 <template>
-  <div class="p-16 text-center text-xl">
-    <h4>Página en construcción</h4>
-    <br />
-    <nuxt-link to="/" class="underline text-base">Regresar al inicio</nuxt-link>
-  </div>
+  <div></div>
 </template>
 
 <script>
-export default {}
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters('user', ['favorites'])
+  },
+  mounted() {
+    this.$router.push('/biblioteca/' + (this.favorites._id || ''))
+  }
+}
 </script>

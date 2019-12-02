@@ -32,12 +32,12 @@
       </button>
     </div>
     <div
-      v-if="options.length"
       v-closable="{
         handler: 'onClickOutsideOptions',
         exclude: []
       }"
       class="flex-none flex items-center px-2 relative"
+      :class="!options.length && 'invisible pointer-events-none'"
     >
       <button class="p-1 focus:outline-none" @click="showOptions = true">
         <Icon name="dots-vertical" class="w-6 h-6" />

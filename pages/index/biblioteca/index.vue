@@ -20,12 +20,16 @@
       <PlaylistItem
         :playlist="playlist"
         :show-play="true"
-        :options="[
-          {
-            text: 'Eliminar playlist',
-            action: () => deletePlaylistAction(playlist)
-          }
-        ]"
+        :options="
+          playlist.special
+            ? []
+            : [
+                {
+                  text: 'Eliminar playlist',
+                  action: () => deletePlaylistAction(playlist)
+                }
+              ]
+        "
         :action="() => $router.push('/biblioteca/' + playlist.id)"
       />
     </div>
@@ -109,11 +113,18 @@ export default {
     },
     async deletePlaylistAction(playlist) {
       try {
-        await this.deletePlaylist(playlist.id)
-        this.$notify({
-          group: 'main',
-          title: 'Playlist eliminada'
-        })
+        const result = await this.deletePlaylist(playlist.id)
+        if (result.deletedCount) {
+          this.$notify({
+            group: 'main',
+            title: 'Playlist eliminada'
+          })
+        } else {
+          this.$notify({
+            group: 'main',
+            title: 'No se pudo eliminar la playlist'
+          })
+        }
       } catch (error) {
         this.$notify({
           group: 'main',

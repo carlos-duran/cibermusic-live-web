@@ -98,7 +98,6 @@ import PlaylistItem from '~/components/internal/PlaylistItem'
 import AppModal from '~/components/internal/AppModal'
 
 export default {
-  key: (to) => to.fullPath,
   components: {
     AppModal,
     TrackItem,
@@ -120,12 +119,14 @@ export default {
     ...mapState('user', ['playlists']),
     ...mapGetters('player', ['currentTrack'])
   },
-  watchQuery: ['q'],
   async mounted() {
     if (this.$route.query.q) {
       this.searching = true
       this.results = await this.$axios.$get('/search?q=' + this.$route.query.q)
       this.searching = false
+    }
+    if (this.$route.query.play) {
+      this.loadFullAndPlay({ queue: this.results.data, pos: 0 })
     }
   },
   methods: {

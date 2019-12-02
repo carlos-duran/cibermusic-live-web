@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div v-for="playlist in topPlaylists" :key="playlist.id">
+      <div v-for="playlist in topPlaylists" :key="'1' + playlist.id">
         <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
           {{ playlist.title }}
         </h3>
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div v-for="playlist in selectedPlaylists" :key="playlist.id">
+      <div v-for="playlist in selectedPlaylists" :key="'2' + playlist.id">
         <h3 class="text-xl md:text-2xl xl:text-3xl mb-2 md:mb-4">
           {{ playlist.title }}
         </h3>
