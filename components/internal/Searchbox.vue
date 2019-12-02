@@ -27,7 +27,7 @@
 export default {
   data() {
     return {
-      q: ''
+      q: this.$route.query.q
     }
   },
   methods: {

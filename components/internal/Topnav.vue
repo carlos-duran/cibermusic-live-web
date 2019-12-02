@@ -13,7 +13,7 @@
       <div
         class="px-2 md:px-4 md:max-w-lg md:absolute inset-0 mx-auto flex items-center"
       >
-        <Searchbox />
+        <Searchbox :key="$route.fullPath" />
       </div>
       <div class="px-2 md:px-4">
         <button
